@@ -1,0 +1,6 @@
+bash << 'EOF'
+set -e
+npm run lint
+npm run lint:styles
+npm run typecheck
+EOF

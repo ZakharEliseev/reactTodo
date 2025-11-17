@@ -18,7 +18,7 @@ interface TaskListState {
   taskPerPage: number;
 }
 
-export const TaskList = class extends Component<{}, TaskListState> {
+export class TaskList extends Component<{}, TaskListState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -104,6 +104,7 @@ export const TaskList = class extends Component<{}, TaskListState> {
 
     return (
       <>
+        <h1 className="header">ToDo</h1>
         <AddForm onAddTask={this.addTask} />
         <ul className="todo-list">{taskItems}</ul>
         <Filters onSetActiveFilter={this.setActiveFilter} />

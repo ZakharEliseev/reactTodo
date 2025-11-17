@@ -9,7 +9,7 @@ interface AddFormProps {
   onAddTask: (text: string) => void;
 }
 
-export const AddForm = class extends Component<AddFormProps, InputValueState> {
+export class AddForm extends Component<AddFormProps, InputValueState> {
   constructor(props: AddFormProps) {
     super(props);
     this.state = {

@@ -6,7 +6,7 @@ import { TaskList } from './components/TaskList';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
-    <h1 className="header">ToDo</h1>
+    
     <TaskList />
   </>,
 )

@@ -5,7 +5,7 @@ interface FilterProps {
   onSetActiveFilter: (text: string) => void;
 }
 
-export const Filters = class extends Component<FilterProps> {
+export class Filters extends Component<FilterProps> {
   constructor(props: FilterProps) {
     super(props);
   }

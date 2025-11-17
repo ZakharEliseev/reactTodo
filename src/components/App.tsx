@@ -39,61 +39,54 @@ export class App extends Component<{}, TaskListState> {
   }
 
   addTask = (taskText: string) => {
-    this.setState((state) => ({
-      list: [...state.list, { id: Date.now(), text: taskText, isComplete: false }],
+    this.setState((prevState) => ({
+      list: [...prevState.list, { id: Date.now(), text: taskText, isComplete: false }],
     }));
   };
 
   deleteTask = (id: number) => {
-    this.setState((state) => ({
-      list: [...state.list.filter((task) => task.id !== id)],
+    this.setState((prevState) => ({
+      list: prevState.list.filter((task) => task.id !== id),
     }));
   };
 
   toggleStatusTask = (id: number) => {
     this.setState((state) => ({
-      list: state.list.map((task) => {
-        if (task.id === id) {
-          return { ...task, isComplete: !task.isComplete };
-        }
-        return task;
-      }),
+      list: state.list.map((task) => ({
+        ...task,
+        isComplete: task.id === id ? !task.isComplete : task.isComplete,
+      })),
     }));
   };
 
   setActiveFilter = (filterName: FilterState) => {
-    this.setState(() => ({
+    this.setState({
       activeFilter: filterName,
       currentPage: INITIAL_PAGE,
-    }));
+    });
   };
 
   getFilteredTasks = (): Task[] => {
-    const { list } = this.state;
-    const { activeFilter } = this.state;
-    switch (activeFilter) {
-      case 'complete': {
-        return list.filter((task) => task.isComplete === true);
-      }
-      case 'active': {
-        return list.filter((task) => task.isComplete === false);
-      }
-      default:
-        return list;
+    const { list, activeFilter } = this.state;
+    if (activeFilter === FilterState.ALL) {
+      return list;
     }
+    return list.filter((task) =>
+      activeFilter === FilterState.COMPLETE ? task.isComplete : !task.isComplete,
+    );
   };
 
   getPaginatedTasks = (list: Task[]): Task[] => {
     const { currentPage, taskPerPage } = this.state;
-    const start = (currentPage - 1) * taskPerPage;
+    const start = (currentPage - INITIAL_PAGE) * taskPerPage;
     const end = currentPage * taskPerPage;
     return list.slice(start, end);
   };
 
   setCurrentPage = (page: number) => {
-    this.setState(() => ({
+    this.setState({
       currentPage: page,
-    }));
+    });
   };
 
   render() {

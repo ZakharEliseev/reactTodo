@@ -5,6 +5,15 @@ import { Filters } from './Filters';
 import { Paginator } from './Paginator';
 import { TaskItem } from './TaskItem';
 
+const INITIAL_PAGE: number = 1;
+const TASK_PER_PAGE: number = 5;
+
+export enum FilterState {
+  ALL = 'all',
+  COMPLETE = 'complete',
+  ACTIVE = 'active',
+}
+
 interface Task {
   id: number;
   text: string;
@@ -13,19 +22,19 @@ interface Task {
 
 interface TaskListState {
   list: Task[];
-  activeFilter: string;
+  activeFilter: FilterState;
   currentPage: number;
   taskPerPage: number;
 }
 
 export class App extends Component<{}, TaskListState> {
-  constructor(props: {}) {
-    super(props);
+  constructor() {
+    super({});
     this.state = {
       list: [],
-      activeFilter: 'all',
-      currentPage: 1,
-      taskPerPage: 5,
+      activeFilter: FilterState.ALL,
+      currentPage: INITIAL_PAGE,
+      taskPerPage: TASK_PER_PAGE,
     };
   }
 
@@ -52,10 +61,10 @@ export class App extends Component<{}, TaskListState> {
     }));
   };
 
-  setActiveFilter = (filterName: string) => {
+  setActiveFilter = (filterName: FilterState) => {
     this.setState(() => ({
       activeFilter: filterName,
-      currentPage: 1
+      currentPage: INITIAL_PAGE
     }));
   };
 
@@ -109,7 +118,6 @@ export class App extends Component<{}, TaskListState> {
         <ul className="todo-list">{taskItems}</ul>
         <Filters onSetActiveFilter={this.setActiveFilter} />
         <Paginator
-          currentPage={this.state.currentPage}
           totalPages={totalPages}
           onSetCurrentPage={this.setCurrentPage}
         />

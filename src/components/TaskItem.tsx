@@ -1,6 +1,5 @@
 import { Component } from "react";
 
-
 interface TaskItemProps {
   id: number;
   text: string;
@@ -8,6 +7,7 @@ interface TaskItemProps {
   onDelete: (id: number) => void;
   onComplete: (id: number) => void;
 }
+
 export class TaskItem extends Component<TaskItemProps> {
   constructor(props: TaskItemProps) {
     super(props);

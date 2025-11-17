@@ -30,7 +30,6 @@ export class AddForm extends Component<AddFormProps, InputValueState> {
         <form
           className="todo-form"
           onSubmit={(e) => {
-            const { inputValue } = this.state;
             e.preventDefault();
             this.props.onAddTask(inputValue);
             this.setState({ inputValue: '' });

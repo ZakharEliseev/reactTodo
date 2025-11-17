@@ -1,7 +1,6 @@
 import { Component } from 'react';
 
 interface PaginatorProps {
-  currentPage: number;
   totalPages: number;
   onSetCurrentPage: (page: number) => void;
 }

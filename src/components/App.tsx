@@ -18,7 +18,7 @@ interface TaskListState {
   taskPerPage: number;
 }
 
-export class TaskList extends Component<{}, TaskListState> {
+export class App extends Component<{}, TaskListState> {
   constructor(props: {}) {
     super(props);
     this.state = {

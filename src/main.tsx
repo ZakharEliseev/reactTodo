@@ -2,11 +2,6 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 
 
-import { TaskList } from './components/TaskList';
+import { App } from './components/App';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <>
-    
-    <TaskList />
-  </>,
-)
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />);

@@ -5,8 +5,6 @@ import { Filters } from './Filters';
 import { Paginator } from './Paginator';
 import { TaskItem } from './TaskItem';
 
-const INITIAL_PAGE: number = 1;
-const TASK_PER_PAGE: number = 5;
 
 export enum FilterState {
   ALL = 'all',
@@ -28,23 +26,26 @@ interface TaskListState {
 }
 
 export class App extends Component<{}, TaskListState> {
+  private INITIAL_PAGE: number = 1;
+  private TASK_PER_PAGE: number = 5;
+
   constructor(props: {}) {
     super(props);
     this.state = {
       list: [],
       activeFilter: FilterState.ALL,
-      currentPage: INITIAL_PAGE,
-      taskPerPage: TASK_PER_PAGE,
+      currentPage: this.INITIAL_PAGE,
+      taskPerPage: this.TASK_PER_PAGE,
     };
   }
 
-  addTask = (taskText: string) => {
+  handleAddTask = (taskText: string) => {
     this.setState((prevState) => ({
       list: [...prevState.list, { id: Date.now(), text: taskText, isComplete: false }],
     }));
   };
 
-  deleteTask = (id: number) => {
+  handleDeleteTask = (id: number) => {
     this.setState((prevState) => ({
       list: prevState.list.filter((task) => task.id !== id),
     }));
@@ -59,10 +60,10 @@ export class App extends Component<{}, TaskListState> {
     }));
   };
 
-  setActiveFilter = (filterName: FilterState) => {
+  handleSetActiveFilter = (filterName: FilterState) => {
     this.setState({
       activeFilter: filterName,
-      currentPage: INITIAL_PAGE,
+      currentPage: this.INITIAL_PAGE,
     });
   };
 
@@ -78,12 +79,12 @@ export class App extends Component<{}, TaskListState> {
 
   getPaginatedTasks = (list: Task[]): Task[] => {
     const { currentPage, taskPerPage } = this.state;
-    const start = (currentPage - INITIAL_PAGE) * taskPerPage;
+    const start = (currentPage - this.INITIAL_PAGE) * taskPerPage;
     const end = currentPage * taskPerPage;
     return list.slice(start, end);
   };
 
-  setCurrentPage = (page: number) => {
+  handleSetCurrentPage = (page: number) => {
     this.setState({
       currentPage: page,
     });
@@ -97,21 +98,27 @@ export class App extends Component<{}, TaskListState> {
     return (
       <>
         <h1 className="header">ToDo</h1>
-        <AddTaskForm onAddTask={this.addTask} />
+        <AddTaskForm onAddTask={this.handleAddTask} />
         <ul className="todo-list">
           {paginatedTask.map((task) => (
             <TaskItem
+              {...task}
               key={task.id}
-              id={task.id}
-              text={task.text}
-              onDelete={this.deleteTask}
+              onDelete={this.handleDeleteTask}
               onComplete={this.toggleStatusTask}
               isComplete={task.isComplete}
             />
           ))}
         </ul>
-        <Filters onSetActiveFilter={this.setActiveFilter} activeFilter={this.state.activeFilter}/>
-        <Paginator totalPages={totalPages} onSetCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
+        <Filters
+          onSetActiveFilter={this.handleSetActiveFilter}
+          activeFilter={this.state.activeFilter}
+        />
+        <Paginator
+          totalPages={totalPages}
+          onSetCurrentPage={this.handleSetCurrentPage}
+          currentPage={this.state.currentPage}
+        />
       </>
     );
   }

@@ -16,30 +16,31 @@ export class AddTaskForm extends Component<AddFormProps, InputValueState> {
     };
   }
 
-  onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       inputValue: e.target.value,
     });
   };
 
-  submitTask = (e: React.FormEvent<HTMLFormElement>) => {
-    const { inputValue } = this.state;
+  handleSubmitTask = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const { inputValue } = this.state;
     this.props.onAddTask(inputValue);
     this.setState({ inputValue: '' });
   };
 
   render() {
     const { inputValue } = this.state;
+
     return (
-      <form className="todo-form" onSubmit={(e) => this.submitTask(e)}>
+      <form className="todo-form" onSubmit={(e) => this.handleSubmitTask(e)}>
         <input
           type="text"
           name="task"
           className="todo-form__input"
           placeholder="add tour task here.."
           value={inputValue}
-          onChange={this.onValueChange}
+          onChange={this.handleValueChange}
         />
         <button type="submit" title="add-task">
           Add

@@ -7,29 +7,25 @@ interface PaginatorProps {
 }
 
 export class Paginator extends Component<PaginatorProps> {
+  private INDEX_SHIFT = 1;
   constructor(props: PaginatorProps) {
     super(props);
   }
 
-  toggleActiveButton = (page: number): string => {
-    return page === this.props.currentPage ? 'active-button' : '';
-  }
-  
   render() {
     const { totalPages } = this.props;
-    const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+    const pages = Array.from({ length: totalPages }, (_, index) => index + this.INDEX_SHIFT);
+
     return (
       <div className="todo-paging">
-        {pages.map((page) => {
-          return (
+        {pages.map((page) => (
             <button
-              className={this.toggleActiveButton(page)}
+              className={this.props.currentPage === page ? 'active-button' : ''}
               key={page}
               onClick={() => this.props.onSetCurrentPage(page)}>
               {page}
             </button>
-          );
-        })}
+        ))}
       </div>
     );
   }

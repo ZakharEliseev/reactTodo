@@ -21,19 +21,19 @@ export class Filters extends Component<FilterProps> {
       <div className="todo-filters">
         <button
           onClick={(e) => this.props.onSetActiveFilter(e.currentTarget.title as FilterState)}
-          className={this.toggleActiveButton('all')}
+          className={this.toggleActiveButton(FilterState.ALL)}
           title="all">
           All
         </button>
         <button
           onClick={(e) => this.props.onSetActiveFilter(e.currentTarget.title as FilterState)}
-          className={this.toggleActiveButton('active')}
+          className={this.toggleActiveButton(FilterState.ACTIVE)}
           title="active">
           Active
         </button>
         <button
           onClick={(e) => this.props.onSetActiveFilter(e.currentTarget.title as FilterState)}
-          className={this.toggleActiveButton('complete')}
+          className={this.toggleActiveButton(FilterState.COMPLETE)}
           title="complete">
           Complete
         </button>

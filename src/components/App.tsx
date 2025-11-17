@@ -110,7 +110,7 @@ export class App extends Component<{}, TaskListState> {
             />
           ))}
         </ul>
-        <Filters onSetActiveFilter={this.setActiveFilter} />
+        <Filters onSetActiveFilter={this.setActiveFilter} activeFilter={this.state.activeFilter}/>
         <Paginator totalPages={totalPages} onSetCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
       </>
     );

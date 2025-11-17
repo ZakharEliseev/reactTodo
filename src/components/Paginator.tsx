@@ -14,6 +14,7 @@ export class Paginator extends Component<PaginatorProps> {
   toggleActiveButton = (page: number): string => {
     return page === this.props.currentPage ? 'active-button' : '';
   }
+  
   render() {
     const { totalPages } = this.props;
     const pages = Array.from({ length: totalPages }, (_, index) => index + 1);

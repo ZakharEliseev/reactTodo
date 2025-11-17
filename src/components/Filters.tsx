@@ -4,6 +4,7 @@ import { FilterState } from './App';
 
 interface FilterProps {
   onSetActiveFilter: (text: FilterState) => void;
+  activeFilter: FilterState;
 }
 
 export class Filters extends Component<FilterProps> {
@@ -11,24 +12,28 @@ export class Filters extends Component<FilterProps> {
     super(props);
   }
 
+  toggleActiveButton = (filter: string): string => {
+    return filter === this.props.activeFilter ? 'active-button' : '';
+  }
+
   render() {
     return (
       <div className="todo-filters">
         <button
           onClick={(e) => this.props.onSetActiveFilter(e.currentTarget.title as FilterState)}
-          className="filter-button"
+          className={this.toggleActiveButton('all')}
           title="all">
           All
         </button>
         <button
           onClick={(e) => this.props.onSetActiveFilter(e.currentTarget.title as FilterState)}
-          className="filter-button"
+          className={this.toggleActiveButton('active')}
           title="active">
           Active
         </button>
         <button
           onClick={(e) => this.props.onSetActiveFilter(e.currentTarget.title as FilterState)}
-          className="filter-button"
+          className={this.toggleActiveButton('complete')}
           title="complete">
           Complete
         </button>

@@ -4,7 +4,6 @@ interface InputValueState {
   inputValue: string;
 }
 
-
 interface AddFormProps {
   onAddTask: (text: string) => void;
 }

@@ -15,14 +15,12 @@ export class TaskItem extends Component<TaskItemProps> {
 
   render() {
     const { id, text, onDelete, onComplete, isComplete } = this.props;
-    const deleteBtn = <button onClick={() => onDelete(id)}>Delete</button>;
-    const completeBtn = <button onClick={() => onComplete(id)}>Complete</button>;
     const completeTaskClass = isComplete ? 'todo-list__complete-task' : '';
     return (
       <li>
-        {deleteBtn}
+        <button onClick={() => onDelete(id)}>Delete</button>
         <p className={completeTaskClass}>{text}</p>
-        {completeBtn}
+        <button onClick={() => onComplete(id)}>Complete</button>
       </li>
     );
   }

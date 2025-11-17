@@ -28,8 +28,8 @@ interface TaskListState {
 }
 
 export class App extends Component<{}, TaskListState> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       list: [],
       activeFilter: FilterState.ALL,
@@ -64,7 +64,7 @@ export class App extends Component<{}, TaskListState> {
   setActiveFilter = (filterName: FilterState) => {
     this.setState(() => ({
       activeFilter: filterName,
-      currentPage: INITIAL_PAGE
+      currentPage: INITIAL_PAGE,
     }));
   };
 
@@ -73,19 +73,19 @@ export class App extends Component<{}, TaskListState> {
     const { activeFilter } = this.state;
     switch (activeFilter) {
       case 'complete': {
-      return list.filter((task) => task.isComplete === true);
+        return list.filter((task) => task.isComplete === true);
       }
       case 'active': {
         return list.filter((task) => task.isComplete === false);
       }
       default:
-        return list
+        return list;
     }
   };
 
   getPaginatedTasks = (list: Task[]): Task[] => {
-    const {currentPage, taskPerPage} = this.state;
-    const start = (currentPage-1) * taskPerPage;
+    const { currentPage, taskPerPage } = this.state;
+    const start = (currentPage - 1) * taskPerPage;
     const end = currentPage * taskPerPage;
     return list.slice(start, end);
   };
@@ -93,23 +93,25 @@ export class App extends Component<{}, TaskListState> {
   setCurrentPage = (page: number) => {
     this.setState(() => ({
       currentPage: page,
-    }))
-  }
+    }));
+  };
 
   render() {
     const filteredTasks = this.getFilteredTasks();
     const totalPages = Math.ceil(filteredTasks.length / this.state.taskPerPage);
     const paginatedTask = this.getPaginatedTasks(filteredTasks);
-    const taskItems = paginatedTask.map(task => {
-      return <TaskItem
-        key={task.id}
-        id={task.id}
-        text={task.text}
-        onDelete={this.deleteTask}
-        onComplete={this.toggleStatusTask}
-        isComplete={task.isComplete}
-      />
-    })
+    const taskItems = paginatedTask.map((task) => {
+      return (
+        <TaskItem
+          key={task.id}
+          id={task.id}
+          text={task.text}
+          onDelete={this.deleteTask}
+          onComplete={this.toggleStatusTask}
+          isComplete={task.isComplete}
+        />
+      );
+    });
 
     return (
       <>
@@ -117,10 +119,7 @@ export class App extends Component<{}, TaskListState> {
         <AddForm onAddTask={this.addTask} />
         <ul className="todo-list">{taskItems}</ul>
         <Filters onSetActiveFilter={this.setActiveFilter} />
-        <Paginator
-          totalPages={totalPages}
-          onSetCurrentPage={this.setCurrentPage}
-        />
+        <Paginator totalPages={totalPages} onSetCurrentPage={this.setCurrentPage} />
       </>
     );
   }

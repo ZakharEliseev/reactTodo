@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { AddForm } from './AddForm';
+import { AddTaskForm } from './AddTaskForm';
 import { Filters } from './Filters';
 import { Paginator } from './Paginator';
 import { TaskItem } from './TaskItem';
@@ -93,27 +93,26 @@ export class App extends Component<{}, TaskListState> {
     const filteredTasks = this.getFilteredTasks();
     const totalPages = Math.ceil(filteredTasks.length / this.state.taskPerPage);
     const paginatedTask = this.getPaginatedTasks(filteredTasks);
-    const taskItems = paginatedTask.map((task) => {
-      return (
-        <TaskItem
-          key={task.id}
-          id={task.id}
-          text={task.text}
-          onDelete={this.deleteTask}
-          onComplete={this.toggleStatusTask}
-          isComplete={task.isComplete}
-        />
-      );
-    });
 
     return (
       <>
         <h1 className="header">ToDo</h1>
-        <AddForm onAddTask={this.addTask} />
-        <ul className="todo-list">{taskItems}</ul>
+        <AddTaskForm onAddTask={this.addTask} />
+        <ul className="todo-list">
+          {paginatedTask.map((task) => (
+            <TaskItem
+              key={task.id}
+              id={task.id}
+              text={task.text}
+              onDelete={this.deleteTask}
+              onComplete={this.toggleStatusTask}
+              isComplete={task.isComplete}
+            />
+          ))}
+        </ul>
         <Filters onSetActiveFilter={this.setActiveFilter} />
-        <Paginator totalPages={totalPages} onSetCurrentPage={this.setCurrentPage} />
+        <Paginator totalPages={totalPages} onSetCurrentPage={this.setCurrentPage} currentPage={this.state.currentPage}/>
       </>
     );
   }
-};
+}

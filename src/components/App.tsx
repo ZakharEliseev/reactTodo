@@ -1,29 +1,12 @@
 import { Component } from 'react';
 
+import { FilterState, Task, TaskListState } from '../models';
+
 import { AddTaskForm } from './AddTaskForm';
 import { Filters } from './Filters';
 import { Paginator } from './Paginator';
 import { TaskItem } from './TaskItem';
 
-
-export enum FilterState {
-  ALL = 'all',
-  COMPLETE = 'complete',
-  ACTIVE = 'active',
-}
-
-interface Task {
-  id: number;
-  text: string;
-  isComplete: boolean;
-}
-
-interface TaskListState {
-  list: Task[];
-  activeFilter: FilterState;
-  currentPage: number;
-  taskPerPage: number;
-}
 
 export class App extends Component<{}, TaskListState> {
   private INITIAL_PAGE: number = 1;
@@ -123,3 +106,5 @@ export class App extends Component<{}, TaskListState> {
     );
   }
 }
+export { FilterState };
+

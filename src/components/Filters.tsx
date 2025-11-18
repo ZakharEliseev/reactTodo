@@ -1,11 +1,6 @@
 import { Component } from 'react';
 
-import { FilterState } from './App';
-
-interface FilterProps {
-  onSetActiveFilter: (text: FilterState) => void;
-  activeFilter: FilterState;
-}
+import { FilterProps, FilterState } from '../models';
 
 export class Filters extends Component<FilterProps> {
   private filtersMap = [

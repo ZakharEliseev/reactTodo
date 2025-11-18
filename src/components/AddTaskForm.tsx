@@ -1,12 +1,7 @@
 import { Component } from "react";
 
-interface InputValueState {
-  inputValue: string;
-}
+import { AddFormProps, InputValueState } from '../models';
 
-interface AddFormProps {
-  onAddTask: (text: string) => void;
-}
 
 export class AddTaskForm extends Component<AddFormProps, InputValueState> {
   constructor(props: AddFormProps) {

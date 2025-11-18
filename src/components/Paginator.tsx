@@ -1,10 +1,8 @@
 import { Component } from 'react';
 
-interface PaginatorProps {
-  totalPages: number;
-  onSetCurrentPage: (page: number) => void;
-  currentPage: number;
-}
+import { PaginatorProps } from '../models';
+
+
 
 export class Paginator extends Component<PaginatorProps> {
   private INDEX_SHIFT = 1;

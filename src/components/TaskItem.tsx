@@ -1,12 +1,6 @@
 import { Component } from "react";
 
-interface TaskItemProps {
-  id: number;
-  text: string;
-  isComplete: boolean;
-  onDelete: (id: number) => void;
-  onComplete: (id: number) => void;
-}
+import { TaskItemProps } from "../models";
 
 export class TaskItem extends Component<TaskItemProps> {
   constructor(props: TaskItemProps) {

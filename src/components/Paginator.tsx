@@ -18,7 +18,7 @@ export class Paginator extends Component<PaginatorProps> {
       <div className="todoPaging">
         {pages.map((page) => (
           <button
-            className={this.props.currentPage === page ? 'active-button' : ''}
+            className={this.props.currentPage === page ? 'activeButton' : ''}
             key={page}
             onClick={() => this.props.onSetCurrentPage(page)}>
             {page}

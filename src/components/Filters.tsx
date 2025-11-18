@@ -29,7 +29,7 @@ export class Filters extends Component<FilterProps> {
           <button
             key={value}
             onClick={() => this.props.onSetActiveFilter(value)}
-            className={value === this.props.activeFilter ? 'active-button' : ''}>
+            className={value === this.props.activeFilter ? 'activeButton' : ''}>
             {label}
           </button>
         ))}

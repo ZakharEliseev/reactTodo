@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import { connect } from 'react-redux';
+
 import { FilterState, Task, TaskListState } from '../models';
 
 import { AddTaskForm } from './AddTaskForm';
@@ -37,7 +39,7 @@ export class App extends Component<{}, TaskListState> {
   toggleStatusTask = (id: number) => {
     this.setState((state) => ({
       list: state.list.map((task) => ({
-        ...task,
+        ...task, 
         isComplete: task.id === id ? !task.isComplete : task.isComplete,
       })),
     }));
@@ -107,3 +109,13 @@ export class App extends Component<{}, TaskListState> {
   }
 }
 
+const mapStateToProps = (state: any) => {
+  return {
+    list: state.list,
+    activeFilter: state.activeFilter,
+    currentPage: state.currentPage,
+    taskPerPage: state.taskPerPage,
+  };
+}
+
+export default connect(mapStateToProps)(App)

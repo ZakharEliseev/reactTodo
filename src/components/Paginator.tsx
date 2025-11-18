@@ -2,8 +2,6 @@ import { Component } from 'react';
 
 import { PaginatorProps } from '../models';
 
-
-
 export class Paginator extends Component<PaginatorProps> {
   private INDEX_SHIFT = 1;
   constructor(props: PaginatorProps) {

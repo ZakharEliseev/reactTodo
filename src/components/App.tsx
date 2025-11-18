@@ -106,5 +106,4 @@ export class App extends Component<{}, TaskListState> {
     );
   }
 }
-export { FilterState };
 

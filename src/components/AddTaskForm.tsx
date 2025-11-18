@@ -28,11 +28,11 @@ export class AddTaskForm extends Component<AddFormProps, InputValueState> {
     const { inputValue } = this.state;
 
     return (
-      <form className="todo-form" onSubmit={(e) => this.handleSubmitTask(e)}>
+      <form className="todoForm" onSubmit={(e) => this.handleSubmitTask(e)}>
         <input
           type="text"
           name="task"
-          className="todo-form__input"
+          className="todoFormInput"
           placeholder="add tour task here.."
           value={inputValue}
           onChange={this.handleValueChange}

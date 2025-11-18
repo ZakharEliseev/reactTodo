@@ -82,7 +82,7 @@ export class App extends Component<{}, TaskListState> {
       <>
         <h1 className="header">ToDo</h1>
         <AddTaskForm onAddTask={this.handleAddTask} />
-        <ul className="todo-list">
+        <ul className="todoList">
           {paginatedTask.map((task) => (
             <TaskItem
               {...task}

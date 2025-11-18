@@ -24,7 +24,7 @@ export class Filters extends Component<FilterProps> {
 
   render() {
     return (
-      <div className="todo-filters">
+      <div className="todoFilters">
         {this.filtersMap.map(({ label, value }) => (
           <button
             key={value}

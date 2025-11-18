@@ -9,7 +9,7 @@ export class TaskItem extends Component<TaskItemProps> {
 
   render() {
     const { id, text, onDelete, onComplete, isComplete } = this.props;
-    const completeTaskClass = isComplete ? 'todo-list__complete-task' : '';
+    const completeTaskClass = isComplete ? 'todoListCompleteTask' : '';
     return (
       <li>
         <button onClick={() => onDelete(id)}>Delete</button>

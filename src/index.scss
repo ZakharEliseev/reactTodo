@@ -19,17 +19,17 @@ h1 {
   text-align: center;
 }
 
-// 1. Наименее специфичные селекторы для обычного состояния
+
 .todoPaging button {
   margin: 0 5px;
 }
 
-// 2. Базовые состояния :active (наименее специфичные)
+
 button:active {
   background-color: grey;
 }
 
-// 3. Более специфичные селекторы для :active
+
 .todoForm button:active {
   background-color: grey;
 }
@@ -42,12 +42,12 @@ button:active {
   background-color: grey;
 }
 
-// 4. САМЫЕ специфичные селекторы для :active (должны быть ПОСЛЕДНИМИ)
+
 .todoList li button:active {
   background-color: grey;
 }
 
-// --- Остальные стили блоков ---
+
 .todoForm {
   display: flex;
   justify-content: space-between;

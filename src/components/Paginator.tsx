@@ -15,14 +15,14 @@ export class Paginator extends Component<PaginatorProps> {
     const pages = Array.from({ length: totalPages }, (_, index) => index + this.INDEX_SHIFT);
 
     return (
-      <div className="todo-paging">
+      <div className="todoPaging">
         {pages.map((page) => (
-            <button
-              className={this.props.currentPage === page ? 'active-button' : ''}
-              key={page}
-              onClick={() => this.props.onSetCurrentPage(page)}>
-              {page}
-            </button>
+          <button
+            className={this.props.currentPage === page ? 'active-button' : ''}
+            key={page}
+            onClick={() => this.props.onSetCurrentPage(page)}>
+            {page}
+          </button>
         ))}
       </div>
     );

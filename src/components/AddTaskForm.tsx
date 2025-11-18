@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { AddFormProps, InputValueState } from '../Types/models';
+import { AddFormProps, InputValueState } from '../types/models';
 
 export class AddTaskForm extends Component<AddFormProps, InputValueState> {
   constructor(props: AddFormProps) {

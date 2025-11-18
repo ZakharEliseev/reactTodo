@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-import {reducer} from './Reducers/todoState'
+import {reducer} from './reducers/todoState'
 
 export const store = createStore(reducer);
 

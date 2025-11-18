@@ -1,6 +1,6 @@
-import { FilterState } from '@/Types/models';
+import { FilterState } from '@/types/models';
 
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../../Types/constants';
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../../types/constants';
 
 const initialState: any = {
   list: [],

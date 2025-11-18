@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { TaskItemProps } from '../Types/models';
+import { TaskItemProps } from '../types/models';
 
 export class TaskItem extends Component<TaskItemProps> {
   constructor(props: TaskItemProps) {

@@ -1,4 +1,4 @@
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../../Types/constants';
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../../types/constants';
 
 export const todoActionsAdd = (text: string) => {
   return {

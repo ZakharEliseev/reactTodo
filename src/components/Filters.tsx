@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { FilterProps, FilterState } from '../Types/models';
+import { FilterProps, FilterState } from '../types/models';
 
 export class Filters extends Component<FilterProps> {
   private filtersMap = [

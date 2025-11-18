@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { FilterState, Task, TaskListState } from '../Types/models';
+import { FilterState, Task, TaskListState } from '../types/models';
 
 import { AddTaskForm } from './AddTaskForm';
 import { Filters } from './Filters';

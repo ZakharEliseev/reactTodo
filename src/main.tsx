@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import './index.scss';
 
 import { App } from './components/App';
-import { store } from './Store';
+import { store } from './store';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>

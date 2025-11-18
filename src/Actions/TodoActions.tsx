@@ -1,4 +1,3 @@
-
 import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../constants';
 
 export const todoActionsAdd = (text: string) => {

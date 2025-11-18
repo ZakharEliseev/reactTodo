@@ -2,13 +2,12 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { FilterState, Task, TaskListState } from '../models';
+import { FilterState, Task, TaskListState } from '../Types/models';
 
 import { AddTaskForm } from './AddTaskForm';
 import { Filters } from './Filters';
 import { Paginator } from './Paginator';
 import { TaskItem } from './TaskItem';
-
 
 export class App extends Component<{}, TaskListState> {
   private INITIAL_PAGE: number = 1;
@@ -39,7 +38,7 @@ export class App extends Component<{}, TaskListState> {
   toggleStatusTask = (id: number) => {
     this.setState((state) => ({
       list: state.list.map((task) => ({
-        ...task, 
+        ...task,
         isComplete: task.id === id ? !task.isComplete : task.isComplete,
       })),
     }));
@@ -116,6 +115,6 @@ const mapStateToProps = (state: any) => {
     currentPage: state.currentPage,
     taskPerPage: state.taskPerPage,
   };
-}
+};
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);

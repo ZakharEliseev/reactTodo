@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { FilterProps, FilterState } from '../models';
+import { FilterProps, FilterState } from '../Types/models';
 
 export class Filters extends Component<FilterProps> {
   private filtersMap = [
@@ -36,5 +36,4 @@ export class Filters extends Component<FilterProps> {
       </div>
     );
   }
-};
-
+}

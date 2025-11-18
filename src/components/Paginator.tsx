@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { PaginatorProps } from '../models';
+import { PaginatorProps } from '../Types/models';
 
 export class Paginator extends Component<PaginatorProps> {
   private INDEX_SHIFT = 1;
@@ -25,4 +25,4 @@ export class Paginator extends Component<PaginatorProps> {
       </div>
     );
   }
-};
+}

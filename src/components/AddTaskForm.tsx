@@ -1,7 +1,6 @@
-import { Component } from "react";
+import { Component } from 'react';
 
-import { AddFormProps, InputValueState } from '../models';
-
+import { AddFormProps, InputValueState } from '../Types/models';
 
 export class AddTaskForm extends Component<AddFormProps, InputValueState> {
   constructor(props: AddFormProps) {
@@ -43,4 +42,4 @@ export class AddTaskForm extends Component<AddFormProps, InputValueState> {
       </form>
     );
   }
-};
+}

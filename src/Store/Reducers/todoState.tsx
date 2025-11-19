@@ -1,6 +1,6 @@
 import { FilterState } from '@/types/models';
 
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../../types/constants';
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_CURRENT_PAGE, SET_FILTER } from '../../types/constants';
 
 const initialState: any = {
   list: [],
@@ -33,6 +33,18 @@ export const reducer = (state = initialState, action: any) => {
           return task.id !== action.payload.id;
         }),
       };
+    }
+    case SET_FILTER: {
+      return {
+        ...state,
+        activeFilter: action.payload.activeFilter,
+      };
+    }
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state,
+        currentPage: action.payload.currentPage
+      }
     }
     default: {
       return state;

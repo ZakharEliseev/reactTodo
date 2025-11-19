@@ -1,22 +1,35 @@
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK } from '../../types/constants';
+import { FilterState } from '@/types/models';
+
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_CURRENT_PAGE, SET_FILTER } from '../../types/constants';
 
 export const todoActionsAdd = (text: string) => {
-  return {
+  ({
     type: ADD_TASK,
     payload: text,
-  };
+  });
 };
 
 export const todoActionDelete = (id: number) => {
-  return {
+  ({
     type: DELETE_TASK,
     payload: id,
-  };
+  });
 };
 
 export const todoCompleteTask = (id: number) => {
-  return {
+  ({
     type: COMPLETE_TASK,
     payload: id,
-  };
+  });
 };
+
+export const setFilter = (filter: FilterState) => ({
+  type: SET_FILTER,
+  payload: filter,
+});
+
+export const setCurrentPage = (currentPage: number) => ({
+  type: SET_CURRENT_PAGE,
+  payload: currentPage,
+});
+

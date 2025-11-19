@@ -2,12 +2,20 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+import {
+  setCurrentPage,
+  setFilter,
+  todoActionDelete,
+  todoActionsAdd,
+  todoCompleteTask,
+} from '../store/actions/todoActions';
 import { FilterState, Task, TaskListState } from '../types/models';
 
 import { AddTaskForm } from './AddTaskForm';
 import { Filters } from './Filters';
 import { Paginator } from './Paginator';
 import { TaskItem } from './TaskItem';
+
 
 export class App extends Component<{}, TaskListState> {
   private INITIAL_PAGE: number = 1;

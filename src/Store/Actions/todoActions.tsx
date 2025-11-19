@@ -2,34 +2,28 @@ import { FilterState } from '@/types/models';
 
 import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_CURRENT_PAGE, SET_FILTER } from '../../types/constants';
 
-export const todoActionsAdd = (text: string) => {
-  ({
+export const todoActionsAdd = (text: string) => ({
     type: ADD_TASK,
-    payload: text,
-  });
-};
+    payload: {text: text},
+});
 
-export const todoActionDelete = (id: number) => {
-  ({
+export const todoActionDelete = (id: number) => ({
     type: DELETE_TASK,
-    payload: id,
-  });
-};
+    payload: {id: id},
+});
 
-export const todoCompleteTask = (id: number) => {
-  ({
+export const todoCompleteTask = (id: number) => ({
     type: COMPLETE_TASK,
-    payload: id,
-  });
-};
+    payload: {id: id},
+});
 
-export const setFilter = (filter: FilterState) => ({
+export const setFilter = (activeFilter: FilterState) => ({
   type: SET_FILTER,
-  payload: filter,
+  payload: { activeFilter: activeFilter },
 });
 
 export const setCurrentPage = (currentPage: number) => ({
   type: SET_CURRENT_PAGE,
-  payload: currentPage,
+  payload: {currentPage: currentPage},
 });
 

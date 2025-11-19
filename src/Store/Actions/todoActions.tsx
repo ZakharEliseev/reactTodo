@@ -4,26 +4,26 @@ import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_CURRENT_PAGE, SET_FILTER } fr
 
 export const todoActionsAdd = (text: string) => ({
     type: ADD_TASK,
-    payload: {text: text},
+    payload: {text},
 });
 
 export const todoActionDelete = (id: number) => ({
     type: DELETE_TASK,
-    payload: {id: id},
+    payload: {id},
 });
 
 export const todoCompleteTask = (id: number) => ({
     type: COMPLETE_TASK,
-    payload: {id: id},
+    payload: {id},
 });
 
 export const setFilter = (activeFilter: FilterState) => ({
   type: SET_FILTER,
-  payload: { activeFilter: activeFilter },
+  payload: { activeFilter },
 });
 
 export const setCurrentPage = (currentPage: number) => ({
   type: SET_CURRENT_PAGE,
-  payload: {currentPage: currentPage},
+  payload: {currentPage},
 });
 

@@ -10,11 +10,16 @@ export interface Task {
   isComplete: boolean;
 }
 
-export interface TaskListState {
+export interface AppProps {
   list: Task[];
   activeFilter: FilterState;
   currentPage: number;
   taskPerPage: number;
+  todoActionsAdd: (text: string) => void;
+  todoActionDelete: (id: number) => void;
+  todoCompleteTask: (id: number) => void;
+  setFilter: (filter: FilterState) => void;
+  setCurrentPage: (page: number) => void;
 }
 
 export interface InputValueState {
